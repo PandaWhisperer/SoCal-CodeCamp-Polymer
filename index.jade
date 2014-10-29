@@ -1,0 +1,328 @@
+//-
+  This file contains only slides
+  See _layout.jade for the layout and setup code
+
+slide.logoslide.nobackground
+  article.flexbox.vcenter
+    span
+      img(src='images/pandastrike-logo-text.jpg')
+
+slide.title-slide.segue.nobackground
+  aside.gdbar
+    img(src='images/pandastrike-logo-256.png')
+  // The content of this hgroup is replaced programmatically through the slide_config.json.
+  hgroup.auto-fadein
+    h1(data-config-title='')
+      // populated from slide_config.json
+    h2(data-config-subtitle='')
+      // populated from slide_config.json
+    p(data-config-presenter='')
+      // populated from slide_config.json
+
+slide
+  hgroup
+    h2 Outline
+  article
+    :markdown
+      * Why Yet Another Framework?
+      * Polymer architecture
+      * Case Study: Glideroom
+
+slide
+  hgroup
+    h2  Why Yet Another Framework?
+  article.flexbox.vcenter
+    ul.build
+      li Polyfills for old browsers
+      li Declarative element creation (No more <code>document.registerElement</code>)
+      li Declarative event mapping
+      li Declarative layout using attributes
+
+      li But wait, there's more!
+      ul
+        li Component library
+        li UI designer
+
+  aside.note
+    img.reflect(src="images/declare_all_the_things.jpg")
+
+slide
+  hgroup
+    h2 Declarative Syntax
+  article
+    pre.prettyprint(data-lang="html").
+      &lt;!-- import Polymer -->
+      &lt;link rel="import" href="polymer/polymer.html">
+      &lt;!-- define custom element -->
+      &lt;polymer-element name="my-element" noscript>
+        &lt;template>
+          &lt;h2>Hi, I'm a custom element!&lt;/h2>
+        &lt;/template>
+      &lt;/polymer-element>
+
+    ul.build
+      li Polymer uses custom elements to define custom elements
+      li <code>&lt;template></code> defines the contents of the Shadow DOM
+      li <code>noscript</code> attribute lets us define element without JavaScript
+
+  aside.note
+    img(src="images/yo_dawg.jpg")
+
+slide
+  hgroup
+    h2 Let's use it!
+  article
+    pre.prettyprint(data-lang="html").
+      &lt;head>
+        &lt;!-- load platform polyfills -->
+        &lt;script src="platform/platform.js">&lt;/script>
+        &lt;!-- import custom elements -->
+        &lt;link rel="import" href="polymer/polymer.html">
+        &lt;link rel="import" href="my-element.html">
+      &lt/head>
+
+      &lt;body>
+        &lt;my-element>&lt;/my-element>
+      &lt;/body>
+
+    h3 Result
+    iframe#example1(data-src="/examples/1/index.html" style="height: 70px")
+
+slide(hidden)
+  hgroup
+    h2 Light &amp; Shadow
+  article
+    p <code>&lt;content></code> defines an insertion point
+    p It will contain the contents of the custom tag (a.k.a Light DOM)
+
+    pre.prettyprint(data-lang="html").
+      &lt;polymer-element name="my-element" noscript>
+        &lt;template>
+          &lt;h2>Hi, I'm <b>&lt;content>&lt;/content></b>&lt;/h2>
+        &lt;/template>
+      &lt;/polymer-element>
+
+    pre.prettyprint(data-lang="html").
+      &lt;my-element>Light DOM&lt;/my-element>
+
+    h3 Result
+    iframe#example1(data-src="/examples/1b/index.html" style="height: 70px")
+
+slide
+  hgroup
+    h2 Data Binding
+  article
+    pre.prettyprint(data-lang="html").
+      &lt;polymer-element name="my-element">
+        &lt;template>
+          &lt;h2><b>{{greeting}}</b>&lt;/h2>
+        &lt;/template>
+        &lt;script src="my-element.js">&lt;/script>
+      &lt;/polymer-element>
+
+    pre.prettyprint(data-lang="javascript").
+      Polymer("my-element", {
+        <b>greeting: "Hi, I'm a custom element!"</b>
+      });
+
+    h3 Result
+    iframe#example2(data-src="/examples/2/index.html" style="height: 70px")
+
+  aside.note
+    section
+      ul
+        li Use web console to manipulate the <code>greeting</code> attribute
+        li Mention that bindings are TWO-WAY (for elements that support it)
+
+slide
+  hgroup
+    h2 Declarative Event Mapping
+  article
+    pre.prettyprint(data-lang="html").
+      &lt;polymer-element name="my-element" <b>on-click="{{clickHandler}}"</b>>
+        &lt;template>
+          &lt;h2>{{greeting}}&lt;/h2>
+        &lt;/template>
+        &lt;script src="my-element.js">&lt;/script>
+      &lt;/polymer-element>
+
+    pre.prettyprint(data-lang="javascript").
+      Polymer("my-element", {
+        greeting: "Click me!",
+        <b>clickHandler: function() {
+          this.greeting = "Hello, " + prompt("What is your name?") + "!";
+        }</b>
+      });
+
+    iframe#example3(data-src="/examples/3/index.html" style="height: 70px")
+
+slide
+  hgroup
+    h2 Declarative Layout
+    h3 Flexbox made simple
+  article
+    p Use attributes, not CSS!
+    pre.prettyprint(data-lang="html").
+      &lt;div horizontal layout>
+        &lt;div>One&lt;/div>
+        &lt;div>Two&lt;/div>
+        &lt;div>Three&lt;/div>
+      &lt;/div>
+
+    p Result
+    iframe(data-src="/examples/flexbox/index1.html" style="height: 80px")
+
+slide
+  hgroup
+    h2 Declarative Layout
+    h3 Flexbox made simple
+  article
+    p Flex it!
+    pre.prettyprint(data-lang="html").
+      &lt;div horizontal layout>
+        &lt;div>One&lt;/div>
+        &lt;div flex>Two&lt;/div>
+        &lt;div>Three&lt;/div>
+      &lt;/div>
+
+    p Result
+    iframe(data-src="/examples/flexbox/index2.html" style="height: 80px")
+
+slide
+  hgroup
+    h2 Declarative Layout
+    h3 Flexbox made simple
+  article
+    p Flex with proportions
+    pre.prettyprint(data-lang="html").
+      &lt;div horizontal layout>
+        &lt;div flex>One&lt;/div>
+        &lt;div flex two>Two&lt;/div>
+        &lt;div flex three>Three&lt;/div>
+      &lt;/div>
+
+    p Result
+    iframe(data-src="/examples/flexbox/index3.html" style="height: 80px")
+
+slide.segue.dark.nobackground
+  aside.gdbar.right.bottom
+    img(src='images/pandastrike-logo-256.png')
+  hgroup.auto-fadein
+    h2 Case Study
+    h3 Glideroom.com
+
+slide
+  hgroup
+    h2 Overview
+    h3 What is Glideroom?
+  article
+   ul
+     li Video conferencing in your browser
+     li Built on WebRTC
+     li NO registration necessary
+     li Get a room with a single click
+     li We call it: "Hangouts without the Hangups"
+
+slide
+  hgroup
+    h2 Architecture
+  article
+    ul
+      li Front-end built entirely with Polymer
+      li Component-based architecture
+      li Everything is a custom element
+      li Emphasis on small, focused, reusable components
+      li Components interact via well-defined public API
+      li Asynchronous communication via events
+
+slide
+  hgroup
+    h2 Show me the Code!
+    h3 room.html
+  article
+    pre.prettyprint(data-lang="html").
+      &lt;body>
+        <b>&lt;glideroom-backend configuration="/configuration.json">&lt;/glideroom-backend></b>
+        &lt;div vertical layout fit>
+          &lt;glideroom-toolbar>&lt;/glideroom-toolbar>
+          &lt;div horizontal layout flex>
+            <b>&lt;glideroom-conference flex>&lt;/glideroom-conference></b>
+            &lt;core-splitter direction="right" touch-action="none">&lt;/core-splitter>
+            <b>&lt;glideroom-chat>&lt;/glideroom-chat></b>
+          &lt;/div>
+          &lt;footer-element>&lt;/footer-element>
+        &lt;/div>
+        &lt;glideroom-dialog-entry id="entry">&lt;/glideroom-dialog-entry>
+        &lt;glideroom-dialog-settings id="settings">&lt;/glideroom-dialog-settings>
+        &lt;script src="js/room.s">&lt;/script>
+      &lt;/body>
+
+slide
+  hgroup
+    h2 Show me the Code!
+    h3 room.js
+  article
+    pre.prettyprint(data-lang="javascript").
+      <b>var backend = document.querySelector("glideroom-backend");</b>
+      var chat = document.querySelector("glideroom-chat");
+
+      window.addEventListener("polymer-ready", function() {
+        chat.addEventListener("chat-message", function(event) {
+          backend.sendMessage(event.detail);
+        });
+        <b>backend.addEventListener("room-event", function(event) {
+          chat.addMessage(event.detail);
+          conference.processEvent(event.detail);
+        });</b>
+        backend.addEventListener("room-ready", function(event) {
+          conference.start(event.detail);
+        });
+      });
+
+slide.segue.dark.nobackground
+  aside.gdbar.right.bottom
+    img(src='images/pandastrike-logo-256.png')
+  hgroup.auto-fadein
+    h2 Resources
+
+slide
+  hgroup
+    h2 RTFM
+  article
+    :markdown
+      * Polymer
+        - Polymer Project: [polymer-project.org](https://www.polymer-project.org)
+        - Polymer API docs: [bit.ly/polymer-api](http://bit.ly/polymer-api)
+        - Polymer Databinding: [bit.ly/polymer-databinding](http://bit.ly/polymer-databinding)
+        - Polymer Layout Reference: [bit.ly/polymer-layout](http://bit.ly/polymer-layout)
+      * Components
+        - Core Elements: [bit.ly/core-elements](http://bit.ly/core-elements)
+        - Core Elements Demo: [bit.ly/core-elements-demo](http://bit.ly/core-elements-demo)
+        - Paper Elements: [bit.ly/paper-elements](http://bit.ly/paper-elements-demo)
+        - Paper Elements Demo: [bit.ly/paper-elements-demo](http://bit.ly/paper-elements-demo)
+      * Other Resources
+        - Built with Polymer: [builtwithpolymer.org](http://builtwithpolymer.org)
+        - Polymer Themes: [polymerthemes.com](https://polymerthemes.com)
+
+slide.thank-you-slide.segue.nobackground
+  aside.gdbar.right
+    img(src='images/pandastrike-logo-256.png')
+  article.flexbox.vleft.auto-fadein
+    h2 &lt;Thank You!&gt;
+    // p Important contact information goes here.
+  p.auto-fadein(data-config-contact='')
+    // populated from slide_config.json
+
+slide.logoslide.dark.nobackground
+  article.flexbox.vcenter
+    span
+      img(src='images/pandastrike-wide.png')
+
+slide.backdrop
+
+script(type="text/javascript").
+  // find all iframes and define shortcut variables according to their IDs
+  [].slice.apply(document.querySelectorAll("iframe")).forEach(function(example) {
+    window[example.id] = example;
+  });
+

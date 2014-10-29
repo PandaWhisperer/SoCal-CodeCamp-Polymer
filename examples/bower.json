@@ -1,0 +1,13 @@
+{
+  "name": "examples",
+  "version": "0.0.1",
+  "authors": [
+    "Christoph Wagner <christoph@pandastrike.com>"
+  ],
+  "description": "Examples for the talk",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "polymer": "~0.4.2"
+  }
+}
