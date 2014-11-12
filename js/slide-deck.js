@@ -356,7 +356,7 @@ SlideDeck.prototype.loadConfig_ = function(config) {
       var github = p.github ? '<span><i class="fa fa-github"></i></span><a href="' + p.github +
           '">' + p.github.replace(/https?:\/\//, '') + '</a>' : '';
 
-      var html2 = [gplus, twitter, www, github].join('<br>');
+      var html2 = [gplus, twitter, github, www].join('<br>');
 
       if (dataConfigContact) {
         dataConfigContact.innerHTML = html2;
