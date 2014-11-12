@@ -26,8 +26,8 @@ var SLIDE_CONFIG = {
     company: 'Panda Strike',
     // gplus: 'http://plus.google.com/1234567890',
     twitter: '@Panda_Whisperer',
-    www: 'http://www.pandastrike.com',
-    github: 'http://github.com/PandaWhisperer'
+    github: 'http://github.com/PandaWhisperer',
+    www: 'http://www.christophwagner.me'
   }/*, {
     name: 'Second Name',
     company: 'Job Title, Google',
