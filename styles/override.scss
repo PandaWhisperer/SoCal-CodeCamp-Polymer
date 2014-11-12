@@ -1,6 +1,7 @@
 
 slides > slide {
   font-size: 30px;
+  line-height: 40px;
 }
 
 h2 {
@@ -10,6 +11,10 @@ h2 {
 
 h3 {
   font-size: 36px;
+}
+
+a.plain {
+  border-bottom: none;
 }
 
 .quote {
