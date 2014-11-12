@@ -2,6 +2,9 @@
   This file contains only slides
   See _layout.jade for the layout and setup code
 
+// add 
+link(rel="stylesheet" href="styles/override.css")
+
 slide.logoslide.nobackground
   article.flexbox.vcenter
     span
@@ -29,7 +32,7 @@ slide
       * Introduction to Polymer
       * [Case Study: Glideroom]
 
-slide
+slide.fill(style="background-image: url('images/codecamp/Kung_Fu_Panda.jpg'); background-size: 80%; background-position: 355px 150px;")
   hgroup
     h2 About Me
   article
@@ -39,8 +42,7 @@ slide
       * 2008-2010: Java / Spring
       * 2010-2013: Ruby / Rails
       * 2013-????: Node / CoffeeScript
-      * Love SoCal!
-      * Tried SF but it was too cold
+      * Joined Panda Strike in 2014
 
 slide.segue.dark.quote.nobackground
   aside.gdbar.right.bottom
@@ -59,7 +61,7 @@ slide
     h2 1993: CGI 
     h3 "Dynamic" web sites are basically Perl scripts
   article.centered
-    p No, not THIS kind of CGI :(
+    p(style="margin-bottom: 20px") No, not THIS kind of CGI
     img(src="images/codecamp/matrix-bullets.jpg")
 
 slide
@@ -75,7 +77,7 @@ slide
 
 slide
   hgroup
-    h2 2006: jQuery brings some sanity to the frontend
+    h2 2006: jQuery brings some sanity
     h3 A new Sheriff in Town
   article.flexbox.vcenter
     img.reflect(src="images/codecamp/jQuery.png")
@@ -90,14 +92,14 @@ slide
   hgroup
     h2 2010: MVC frameworks hit the scene
   article.flexbox.vcenter
-    img.reflect(src="images/codecamp/BackboneJS_logo.png")
-    img.reflect(src="images/codecamp/Ember.js-logo-and-mascot.png")
-    img.reflect(src="images/codecamp/AngularJS.png")
+    img(src="images/codecamp/BackboneJS_logo.png" width="600")
+    img(src="images/codecamp/Ember.js-logo-and-mascot.png" width="200")
+    img(src="images/codecamp/AngularJS.png")
 
 slide
   hgroup
     h2 Why MVC?
-  article
+  article.larger
     ul
       li A way to structure code
       li Common denominator
@@ -106,7 +108,7 @@ slide
 slide
   hgroup
     h2 Why MVC in the browser?
-  article
+  article.larger
     ul
       li Basically: Rails was ultra-successful
       li Rails = MVC
@@ -117,16 +119,17 @@ slide
 slide
   hgroup
     h2 What's good for the server is good for the browser?
-  article
-    ul
-      li "What's good for the browser is good for the server" => Node.js!
+  article.larger
+    ul.build
+      li "What's good for the browser is good for the server"
+      li &nbsp; => Node.js
       li But does the reverse hold true?
-      li.bold I think NOT
+      li.bold Not necessarily
 
 slide
   hgroup
     h2 Problems with MVC in the browser
-  article
+  article.larger
     ul
       li Controller hierarchies => Entangled code
       li "Dumb" elements => everything is still a <code>div</code>
@@ -134,7 +137,7 @@ slide
 slide
   hgroup
     h2 What if there was a different way?
-  article
+  article.larger
     ul
       li HTML already has "smart" elements
       li Dropdowns
@@ -147,6 +150,12 @@ slide
         input(type="checkbox")
       li Radio buttons
         input(type="radio")
+      li All of these provide:
+        ul.build
+          li User Interface
+          li Interactivity
+          li Configurability (<code>type</code>, <code>size</code>, etc.)
+    ul.build
       li.bold What if we could write our OWN elements?
   aside.note
     p make controls LARGER!
@@ -162,7 +171,7 @@ slide.segue.dark.nobackground
 slide
   hgroup
     h2 What are Web Components?
-  article
+  article.larger
     ul
       li A set of specs designed to enhance HTML
       li Enables developers to build custom elements
@@ -171,8 +180,8 @@ slide
 
 slide
   hgroup
-    h2 What are Web Components?
-  article
+    h2 Core Technologies
+  article.larger
     ul
       li Custom Elements
       li Shadow DOM
@@ -181,7 +190,7 @@ slide
 slide
   hgroup
     h2 Custom Elements
-  article
+  article.larger
     ul
       li Make your own HTML tags!
       li &lt;my-awesome-tag&gt;
@@ -189,7 +198,7 @@ slide
 slide
   hgroup
     h2 Shadow DOM
-  article
+  article.larger
     ul
       li Basically a "mini-DOM" for custom elements
       li Can be attached to ANY element
@@ -199,7 +208,7 @@ slide
 slide
   hgroup
     h2 HTML Imports
-  article
+  article.larger
     ul
       li Import another HTML document into your HTML document (yo dawg...)
       li A way to load your custom elements
@@ -223,9 +232,9 @@ slide
       li Declarative layout using attributes
 
       li But wait, there's more!
-      ul
-        li Component library
-        li UI designer
+        ul
+          li Component library
+          li UI designer
 
   aside.note
     img(src="images/declare_all_the_things.jpg")
@@ -233,13 +242,6 @@ slide
 slide
   hgroup
     h2 Anatomy of a Custom Element
-  article
-    ul
-      li
-
-slide
-  hgroup
-    h2 Declarative Syntax
   article
     pre.prettyprint(data-lang="html").
       &lt;!-- import Polymer -->
@@ -265,8 +267,8 @@ slide
   article
     pre.prettyprint(data-lang="html").
       &lt;head>
-        &lt;!-- load platform polyfills -->
-        &lt;script src="platform/platform.js">&lt;/script>
+        &lt;!-- load webcomponents polyfills -->
+        &lt;script src="webcomponents/webcomponents.js">&lt;/script>
         &lt;!-- import custom elements -->
         &lt;link rel="import" href="polymer/polymer.html">
         &lt;link rel="import" href="my-element.html">
@@ -508,6 +510,7 @@ slide.logoslide.dark.nobackground
   article.flexbox.vcenter
     span
       img(src='images/pandastrike-wide.png')
+    a(href="http://www.pandastrike.com") www.pandastrike.com
 
 slide.backdrop
 
