@@ -31,3 +31,9 @@ h3 {
     border-bottom: none;
   }
 }
+
+article.smaller {
+  ul, p {
+    font-size: 25px;
+  }
+}
