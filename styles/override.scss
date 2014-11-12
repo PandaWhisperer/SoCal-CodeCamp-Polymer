@@ -1,0 +1,33 @@
+
+slides > slide {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 50px;
+}
+
+h3 {
+  font-size: 36px;
+}
+
+.quote {
+  q {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .author {
+    bottom: 180px;
+  }
+}
+
+.logoslide {
+  a {
+    color: #0193de;
+    font-weight: 600;
+    margin-top: 30px;
+    border-bottom: none;
+  }
+}

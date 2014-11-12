@@ -291,7 +291,7 @@ h3 {
 }
 
 ul {
-  margin-left: 1.2em;
+  // margin-left: 1.2em;
   margin-bottom: 1em;
   position: relative;
 
@@ -299,22 +299,22 @@ ul {
     margin-bottom: 0.5em;
 
     ul {
-      margin-left: 2em;
+      margin-left: 1em;
       margin-bottom: 0;
 
-      li:before {
-        content: '-';
-        font-weight: 600;
-      }
+      // li:before {
+      //   content: '-';
+      //   font-weight: 600;
+      // }
     }
   }
 
-  > li:before {
-    content: '\00B7';
-    margin-left: -1em;
-    position: absolute;
-    font-weight: 600;
-  }
+  // > li:before {
+  //   content: '\00B7';
+  //   margin-left: -1em;
+  //   position: absolute;
+  //   font-weight: 600;
+  // }
 
   ul {
     margin-top: .5em;
@@ -401,6 +401,11 @@ button:not(:disabled):hover {
 
 button:not(:disabled):active {
   @include background(linear-gradient(#E3E3E3 40%, #F9F9F9 70%));
+}
+
+select, input {
+  font-size: 50px;
+  margin-left: 8px;
 }
 
 :disabled {
@@ -552,6 +557,24 @@ article.smaller {
     &:before, &:after {
       font-size: 60px;
     }
+  }
+}
+
+article.larger {
+  p, ul {
+    font-size: 34px;
+    line-height: 34px;
+    letter-spacing: 0;
+  }
+  table {
+    td, th {
+      font-size: 24px;
+    }
+  }
+  pre {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: 0;
   }
 }
 
