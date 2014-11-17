@@ -23,7 +23,7 @@ URL: https://code.google.com/p/io-2012-slides--><html><head><title>Panda Slides<
 var MyAwesomeTag = document.registerElement("my-awesome-tag");
 // add it to the DOM
 document.body.appendChild(new MyAwesomeTag());
-</pre></ul><h3>Result</h3><iframe id="example0" data-src="/examples/0/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Shadow DOM</h2></hgroup><article class="larger flexbox vleft"><ul><li>Basically a "mini-DOM" for custom elements</li><li>Can be attached to ANY element</li><li>Provides separation and encapsulation</li><li>All element IDs, stylesheets, and JavaScript is scoped within</li><li>No more leaking style classes</li></ul><pre data-lang="javascript" class="prettyprint">// Attach a Shadow DOM to &lt;my-awesome-tag>
+</pre></ul><h3>Result</h3><iframe id="example0" data-src="examples/0/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Shadow DOM</h2></hgroup><article class="larger flexbox vleft"><ul><li>Basically a "mini-DOM" for custom elements</li><li>Can be attached to ANY element</li><li>Provides separation and encapsulation</li><li>All element IDs, stylesheets, and JavaScript is scoped within</li><li>No more leaking style classes</li></ul><pre data-lang="javascript" class="prettyprint">// Attach a Shadow DOM to &lt;my-awesome-tag>
 var element = document.querySelector('my-awesome-tag');
 var shadowRoot = element.createShadowRoot();
 </pre></article></slide><slide><hgroup><h2>HTML Imports</h2></hgroup><article class="larger flexbox vleft"><ul><li>Import another HTML document into your HTML document (yo dawg...)</li><li>A way to load your custom elements</li><pre data-lang="html" class="prettyprint">&lt;!-- imports my-awesome-tag.html into the DOM -->
@@ -52,13 +52,13 @@ var shadowRoot = element.createShadowRoot();
 &lt;body>
   &lt;my-element>&lt;/my-element>
 &lt;/body>
-</pre><h3>Result</h3><iframe id="example1" data-src="/examples/1/index.html" style="height: 70px"></iframe></article></slide><slide hidden="hidden"><hgroup><h2>Light &amp; Shadow</h2></hgroup><article><p><code>&lt;content></code> defines an insertion point</p><p>It will contain the contents of the custom tag (a.k.a Light DOM)</p><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element" noscript>
+</pre><h3>Result</h3><iframe id="example1" data-src="examples/1/index.html" style="height: 70px"></iframe></article></slide><slide hidden="hidden"><hgroup><h2>Light &amp; Shadow</h2></hgroup><article><p><code>&lt;content></code> defines an insertion point</p><p>It will contain the contents of the custom tag (a.k.a Light DOM)</p><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element" noscript>
   &lt;template>
     &lt;h2>Hi, I'm <b>&lt;content>&lt;/content></b>&lt;/h2>
   &lt;/template>
 &lt;/polymer-element>
 </pre><pre data-lang="html" class="prettyprint">&lt;my-element>Light DOM&lt;/my-element>
-</pre><h3>Result</h3><iframe id="example1" data-src="/examples/1b/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Data Binding</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element">
+</pre><h3>Result</h3><iframe id="example1" data-src="examples/1b/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Data Binding</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element">
   &lt;template>
     &lt;h2><b>{{greeting}}</b>&lt;/h2>
   &lt;/template>
@@ -67,7 +67,7 @@ var shadowRoot = element.createShadowRoot();
 </pre><pre data-lang="javascript" class="prettyprint">Polymer("my-element", {
   <b>greeting: "Hi, I'm a custom element!"</b>
 });
-</pre><h3>Result</h3><iframe id="example2" data-src="/examples/2/index.html" style="height: 70px"></iframe></article><aside class="note"><section><ul><li>Use web console to manipulate the <code>greeting</code> attribute</li><li>Mention that bindings are TWO-WAY (for elements that support it)</li></ul></section></aside></slide><slide><hgroup><h2>Declarative Event Mapping</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element" <b>on-click="{{clickHandler}}"</b>>
+</pre><h3>Result</h3><iframe id="example2" data-src="examples/2/index.html" style="height: 70px"></iframe></article><aside class="note"><section><ul><li>Use web console to manipulate the <code>greeting</code> attribute</li><li>Mention that bindings are TWO-WAY (for elements that support it)</li></ul></section></aside></slide><slide><hgroup><h2>Declarative Event Mapping</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element" <b>on-click="{{clickHandler}}"</b>>
   &lt;template>
     &lt;h2>{{greeting}}&lt;/h2>
   &lt;/template>
@@ -79,22 +79,22 @@ var shadowRoot = element.createShadowRoot();
     this.greeting = "Hello, " + prompt("What is your name?") + "!";
   }</b>
 });
-</pre><iframe id="example3" data-src="/examples/3/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Use attributes, not CSS!</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
+</pre><iframe id="example3" data-src="examples/3/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Use attributes, not CSS!</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
   &lt;div>One&lt;/div>
   &lt;div>Two&lt;/div>
   &lt;div>Three&lt;/div>
 &lt;/div>
-</pre><p>Result</p><iframe data-src="/examples/flexbox/index1.html" style="height: 80px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Flex it!</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
+</pre><p>Result</p><iframe data-src="examples/flexbox/index1.html" style="height: 80px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Flex it!</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
   &lt;div>One&lt;/div>
   &lt;div flex>Two&lt;/div>
   &lt;div>Three&lt;/div>
 &lt;/div>
-</pre><p>Result</p><iframe data-src="/examples/flexbox/index2.html" style="height: 80px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Flex with proportions</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
+</pre><p>Result</p><iframe data-src="examples/flexbox/index2.html" style="height: 80px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Flex with proportions</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
   &lt;div flex>One&lt;/div>
   &lt;div flex two>Two&lt;/div>
   &lt;div flex three>Three&lt;/div>
 &lt;/div>
-</pre><p>Result</p><iframe data-src="/examples/flexbox/index3.html" style="height: 80px"></iframe></article></slide><slide class="segue dark nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup class="auto-fadein"><h2>Case Study</h2><h3>Glideroom.com</h3></hgroup></slide><slide><hgroup><h2>Overview</h2><h3>What is Glideroom?</h3></hgroup><article><ul><li>Video conferencing in your browser</li><li>Built on WebRTC</li><li>NO registration necessary</li><li>Get a room with a single click</li><li>We call it: "Hangouts without the Hangups"</li></ul></article></slide><slide><hgroup><h2>Architecture</h2></hgroup><article><ul><li>Front-end built entirely with Polymer</li><li>Component-based architecture</li><li>Everything is a custom element</li><li>Emphasis on small, focused, reusable components</li><li>Components interact via well-defined public API</li><li>Asynchronous communication via events</li></ul></article></slide><slide><hgroup><h2>Show me the Code!</h2><h3>room.html</h3></hgroup><article><pre data-lang="html" class="prettyprint">&lt;body>
+</pre><p>Result</p><iframe data-src="examples/flexbox/index3.html" style="height: 80px"></iframe></article></slide><slide class="segue dark nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup class="auto-fadein"><h2>Case Study</h2><h3>Glideroom.com</h3></hgroup></slide><slide><hgroup><h2>Overview</h2><h3>What is Glideroom?</h3></hgroup><article><ul><li>Video conferencing in your browser</li><li>Built on WebRTC</li><li>NO registration necessary</li><li>Get a room with a single click</li><li>We call it: "Hangouts without the Hangups"</li></ul></article></slide><slide><hgroup><h2>Architecture</h2></hgroup><article><ul><li>Front-end built entirely with Polymer</li><li>Component-based architecture</li><li>Everything is a custom element</li><li>Emphasis on small, focused, reusable components</li><li>Components interact via well-defined public API</li><li>Asynchronous communication via events</li></ul></article></slide><slide><hgroup><h2>Show me the Code!</h2><h3>room.html</h3></hgroup><article><pre data-lang="html" class="prettyprint">&lt;body>
   <b>&lt;glideroom-backend configuration="/configuration.json">&lt;/glideroom-backend></b>
   &lt;div vertical layout fit>
     &lt;glideroom-toolbar>&lt;/glideroom-toolbar>
