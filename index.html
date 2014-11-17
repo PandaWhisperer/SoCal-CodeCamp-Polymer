@@ -1,0 +1,159 @@
+<!DOCTYPE html><!--Panda Slides HTML5 Slide Template
+|
+Based on Google IO 2012/2013 HTML5 Slide Template
+by Eric Bidelman <ebidel@gmail.com>
+   Luke Mahé <lukem@google.com>
+URL: https://code.google.com/p/io-2012-slides--><html><head><title>Panda Slides</title><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="chrome=1"><!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">--><!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">--><!-- This one seems to work all the time, but really small on ipad--><!-- <meta name="viewport" content="initial-scale=0.4">--><meta name="apple-mobile-web-app-capable" content="yes"><link rel="stylesheet" media="all" href="styles/pandastrike.css"><link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="styles/phone.css"><link rel="stylesheet" media="all" href="font-awesome/css/font-awesome.css"><!-- This amazingness opens all links in a new tab.--><base target="_blank"><script data-main="js/slides" src="js/require-1.0.8.min.js"></script></head><body style="opacity: 0"><slides class="layout-widescreen"><!-- add --><link rel="stylesheet" href="styles/override.css"/><slide class="logoslide nobackground"><article class="flexbox vcenter"><span><img src="images/pandastrike-logo-text.jpg"/></span></article></slide><slide class="title-slide segue nobackground"><aside class="gdbar"><img src="images/pandastrike-logo-256.png"/></aside><!-- The content of this hgroup is replaced programmatically through the slide_config.json.--><hgroup class="auto-fadein"><h1 data-config-title=""><!-- populated from slide_config.json--></h1><h2 data-config-subtitle=""><!-- populated from slide_config.json--></h2><p data-config-presenter=""><!-- populated from slide_config.json--></p></hgroup></slide><slide><hgroup><h2>Outline</h2></hgroup><article><ul>
+<li>MVC vs. Component-based Design</li>
+<li>Fundamentals of Web Components</li>
+<li>Introduction to Polymer</li>
+<li>[Case Study: Glideroom]</li>
+</ul>
+</article></slide><slide style="background-image: url('images/codecamp/Kung_Fu_Panda.jpg'); background-size: 80%; background-position: 355px 150px;" class="fill"><hgroup><h2>About Me</h2></hgroup><article><ul>
+<li>Started coding in high school (Turbo Pascal 6.0)</li>
+<li>Professional developer since 2008</li>
+<li>2008-2010: Java / Spring</li>
+<li>2010-2013: Ruby / Rails</li>
+<li>2013-????: Node / CoffeeScript</li>
+<li>Joined Panda Strike in 2014</li>
+</ul>
+</article></slide><slide class="segue dark quote nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup style="position: relative; top: 40px; bottom: 0;"><h2>How did we get here?</h2></hgroup><article class="flexbox vleft auto-fadein"><q>‘Where shall I begin, please, your Majesty’?
+‘Begin at the beginning’, the King said gravely,
+‘and go on till you come to the end: then stop.’</q><div class="author">Lewis Caroll, Alice’s Adventures in Wonderland</div></article></slide><slide><hgroup><h2>1993: CGI </h2><h3>"Dynamic" web sites are basically Perl scripts</h3></hgroup><article class="centered"><p style="margin-bottom: 20px">No, not THIS kind of CGI</p><img src="images/codecamp/matrix-bullets.jpg"/></article></slide><slide><hgroup><h2>1995: PHP and JavaScript are released</h2><h3>Wild, Wild West in Frontend-Land</h3></hgroup><article class="flexbox vcenter"><img src="images/codecamp/PHP-logo.svg.png" width="400" class="reflect"/></article><aside class="note"><ul><li>It's a time of lawlessness and folly</li><li>Spaghetti code abounds</li></ul></aside></slide><slide><hgroup><h2>2006: jQuery brings some sanity</h2><h3>A new Sheriff in Town</h3></hgroup><article class="flexbox vcenter"><img src="images/codecamp/jQuery.png" class="reflect"/></article><aside class="note"><ul><li>A new paradigm</li><li>The rise of the "jQuery Developer"</li><li>Plugins are awesome</li><li>Unfortunately, no encapsulation -> plugin hell!</li></ul></aside></slide><slide><hgroup><h2>2010: MVC frameworks hit the scene</h2></hgroup><article class="flexbox vcenter"><img src="images/codecamp/BackboneJS_logo.png" width="600"/><img src="images/codecamp/Ember.js-logo-and-mascot.png" width="200"/><img src="images/codecamp/AngularJS.png"/></article></slide><slide><hgroup><h2>Why MVC?</h2></hgroup><article class="larger flexbox vleft"><ul><li>A way to structure code</li><li>Set of Best Practices</li><li>No more "where does this code go?"</li><li>Common denominator</li></ul></article></slide><slide><hgroup><h2>Why MVC in the browser?</h2></hgroup><article class="larger flexbox vleft"><ul><li>Basically: Rails was ultra-successful</li><li>Rails = MVC</li><li>Rails = GOOD</li><li>Therefore, MVC = GOOD?</li></ul><p class="centered">"What's good for the server is good for the browser"</p></article></slide><slide><hgroup><h2>What's good for the server is good for the browser?</h2></hgroup><article class="larger flexbox vleft"><ul><li>"What's good for the browser is good for the server"</li><li>&nbsp; => Node.js</li><li>But does the reverse hold true?</li><li class="bold">Not necessarily</li></ul></article></slide><slide><hgroup><h2>Problems with MVC in the browser</h2></hgroup><article class="larger flexbox vleft"><ul><li>In Rails, every request is handled by exactly ONE controller</li><li>On the frontend, pages are divided into several controllers</li><li>Controller hierarchies => entangled code</li><li>"Dumb" elements => everything is still a <code>div</code></li></ul></article></slide><slide><hgroup><h2>What if there was a different way?</h2></hgroup><article class="larger"><ul><li>HTML already has "smart" elements</li><li>Dropdowns<select><option>How much do you like Code Camp?</option><option>A little</option><option>A lot</option><option>OMG it's the best thing EVAR!!!1!</option></select></li><li>Checkboxes<input type="checkbox"/></li><li>Radio buttons<input type="radio"/></li><li>All of these provide:<ul><li>User Interface</li><li>Interactivity</li><li>Configurability (<code>type</code>, <code>size</code>, etc.)</li></ul></li></ul><ul class="build"><p class="bold centered">What if we could write our OWN elements?</p></ul></article><aside class="note"><p>make controls LARGER!</p></aside></slide><slide class="segue dark nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup><h2>Enter Web Components</h2></hgroup><article class="flexbox vcenter"><img src="images/codecamp/web-components-logo.png"/></article></slide><slide><hgroup><h2>What are Web Components?</h2></hgroup><article class="larger flexbox vleft"><ul><li>A set of specs designed to enhance HTML</li><li>Enables developers to build custom elements</li><li>Provides proper encapsulation</li><li>Currently "in progress" at the W3C</li></ul></article></slide><slide><hgroup><h2>Core Technologies</h2></hgroup><article class="larger flexbox vleft"><ul><li>Custom Elements</li><li>Shadow DOM</li><li>HTML Imports</li></ul></article></slide><slide><hgroup><h2>Custom Elements</h2></hgroup><article class="larger flexbox vleft"><ul><li>Make your own HTML tags!</li><li>Allows developers to register new elements with the parser</li><li>Optional second argument specifies prototype</li><pre data-lang="javascript" class="prettyprint">// custom element names MUST include a hyphen (-)
+var MyAwesomeTag = document.registerElement("my-awesome-tag");
+// add it to the DOM
+document.body.appendChild(new MyAwesomeTag());
+</pre></ul><h3>Result</h3><iframe id="example0" data-src="/examples/0/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Shadow DOM</h2></hgroup><article class="larger flexbox vleft"><ul><li>Basically a "mini-DOM" for custom elements</li><li>Can be attached to ANY element</li><li>Provides separation and encapsulation</li><li>All element IDs, stylesheets, and JavaScript is scoped within</li><li>No more leaking style classes</li></ul><pre data-lang="javascript" class="prettyprint">// Attach a Shadow DOM to &lt;my-awesome-tag>
+var element = document.querySelector('my-awesome-tag');
+var shadowRoot = element.createShadowRoot();
+</pre></article></slide><slide><hgroup><h2>HTML Imports</h2></hgroup><article class="larger flexbox vleft"><ul><li>Import another HTML document into your HTML document (yo dawg...)</li><li>A way to load your custom elements</li><pre data-lang="html" class="prettyprint">&lt;!-- imports my-awesome-tag.html into the DOM -->
+&lt;link rel="import" href="my-awesome-tag.html">
+
+&lt;script type="text/javascript">
+  // contents of the import can be accessed like this
+  document.querySelector('link[rel="import"]').import;
+&lt;/script>
+</pre></ul></article></slide><slide class="segue dark nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup style="bottom: 100px"><h2>Introducing Polymer</h2></hgroup><article class="flexbox vcenter"><img src="images/codecamp/polymer-logo.svg" width="300" class="reflect"/></article></slide><slide><hgroup><h2> What is Polymer?</h2></hgroup><article class="flexbox vcenter"><p class="bold">Mainly: a framework to simplify the creation of custom elements</p><ul><li>Declarative element creation (No more <code>document.registerElement</code>)</li><li>Declarative event mapping</li><li>Declarative layout using attributes</li></ul></article><aside class="note"><img src="images/declare_all_the_things.jpg"/></aside></slide><slide><hgroup><h2> But wait, there's more!</h2></hgroup><article class="flexbox vleft larger"><ul><li>Polyfills for old browsers</li><li>Component library</li><li>UI designer</li></ul><a href="https://www.polymer-project.org/tools/designer/" class="plain"><img src="images/codecamp/polymer-designer.png"/></a></article></slide><slide><hgroup><h2>Anatomy of a Custom Element</h2></hgroup><article><ul><li>Polymer uses custom elements to define custom elements</li><li><code>&lt;template></code> defines the contents of the Shadow DOM</li><li><code>noscript</code> attribute lets us define elements without JavaScript</li></ul><pre data-lang="html" class="prettyprint">&lt;!-- import Polymer -->
+&lt;link rel="import" href="polymer/polymer.html">
+&lt;!-- define custom element -->
+&lt;polymer-element name="my-element" noscript>
+  &lt;template>
+    &lt;h2>Hi, I'm a custom element!&lt;/h2>
+  &lt;/template>
+&lt;/polymer-element>
+</pre></article><aside class="note"><img src="images/yo_dawg.jpg"/></aside></slide><slide><hgroup><h2>Let's use it!</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;head>
+  &lt;!-- load webcomponents polyfills -->
+  &lt;script src="webcomponents/webcomponents.js">&lt;/script>
+  &lt;!-- import custom elements -->
+  &lt;link rel="import" href="polymer/polymer.html">
+  &lt;link rel="import" href="my-element.html">
+&lt/head>
+
+&lt;body>
+  &lt;my-element>&lt;/my-element>
+&lt;/body>
+</pre><h3>Result</h3><iframe id="example1" data-src="/examples/1/index.html" style="height: 70px"></iframe></article></slide><slide hidden="hidden"><hgroup><h2>Light &amp; Shadow</h2></hgroup><article><p><code>&lt;content></code> defines an insertion point</p><p>It will contain the contents of the custom tag (a.k.a Light DOM)</p><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element" noscript>
+  &lt;template>
+    &lt;h2>Hi, I'm <b>&lt;content>&lt;/content></b>&lt;/h2>
+  &lt;/template>
+&lt;/polymer-element>
+</pre><pre data-lang="html" class="prettyprint">&lt;my-element>Light DOM&lt;/my-element>
+</pre><h3>Result</h3><iframe id="example1" data-src="/examples/1b/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Data Binding</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element">
+  &lt;template>
+    &lt;h2><b>{{greeting}}</b>&lt;/h2>
+  &lt;/template>
+  &lt;script src="my-element.js">&lt;/script>
+&lt;/polymer-element>
+</pre><pre data-lang="javascript" class="prettyprint">Polymer("my-element", {
+  <b>greeting: "Hi, I'm a custom element!"</b>
+});
+</pre><h3>Result</h3><iframe id="example2" data-src="/examples/2/index.html" style="height: 70px"></iframe></article><aside class="note"><section><ul><li>Use web console to manipulate the <code>greeting</code> attribute</li><li>Mention that bindings are TWO-WAY (for elements that support it)</li></ul></section></aside></slide><slide><hgroup><h2>Declarative Event Mapping</h2></hgroup><article><pre data-lang="html" class="prettyprint">&lt;polymer-element name="my-element" <b>on-click="{{clickHandler}}"</b>>
+  &lt;template>
+    &lt;h2>{{greeting}}&lt;/h2>
+  &lt;/template>
+  &lt;script src="my-element.js">&lt;/script>
+&lt;/polymer-element>
+</pre><pre data-lang="javascript" class="prettyprint">Polymer("my-element", {
+  greeting: "Click me!",
+  <b>clickHandler: function() {
+    this.greeting = "Hello, " + prompt("What is your name?") + "!";
+  }</b>
+});
+</pre><iframe id="example3" data-src="/examples/3/index.html" style="height: 70px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Use attributes, not CSS!</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
+  &lt;div>One&lt;/div>
+  &lt;div>Two&lt;/div>
+  &lt;div>Three&lt;/div>
+&lt;/div>
+</pre><p>Result</p><iframe data-src="/examples/flexbox/index1.html" style="height: 80px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Flex it!</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
+  &lt;div>One&lt;/div>
+  &lt;div flex>Two&lt;/div>
+  &lt;div>Three&lt;/div>
+&lt;/div>
+</pre><p>Result</p><iframe data-src="/examples/flexbox/index2.html" style="height: 80px"></iframe></article></slide><slide><hgroup><h2>Declarative Layout</h2><h3>Flexbox made simple</h3></hgroup><article><p>Flex with proportions</p><pre data-lang="html" class="prettyprint">&lt;div horizontal layout>
+  &lt;div flex>One&lt;/div>
+  &lt;div flex two>Two&lt;/div>
+  &lt;div flex three>Three&lt;/div>
+&lt;/div>
+</pre><p>Result</p><iframe data-src="/examples/flexbox/index3.html" style="height: 80px"></iframe></article></slide><slide class="segue dark nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup class="auto-fadein"><h2>Case Study</h2><h3>Glideroom.com</h3></hgroup></slide><slide><hgroup><h2>Overview</h2><h3>What is Glideroom?</h3></hgroup><article><ul><li>Video conferencing in your browser</li><li>Built on WebRTC</li><li>NO registration necessary</li><li>Get a room with a single click</li><li>We call it: "Hangouts without the Hangups"</li></ul></article></slide><slide><hgroup><h2>Architecture</h2></hgroup><article><ul><li>Front-end built entirely with Polymer</li><li>Component-based architecture</li><li>Everything is a custom element</li><li>Emphasis on small, focused, reusable components</li><li>Components interact via well-defined public API</li><li>Asynchronous communication via events</li></ul></article></slide><slide><hgroup><h2>Show me the Code!</h2><h3>room.html</h3></hgroup><article><pre data-lang="html" class="prettyprint">&lt;body>
+  <b>&lt;glideroom-backend configuration="/configuration.json">&lt;/glideroom-backend></b>
+  &lt;div vertical layout fit>
+    &lt;glideroom-toolbar>&lt;/glideroom-toolbar>
+    &lt;div horizontal layout flex>
+      <b>&lt;glideroom-conference flex>&lt;/glideroom-conference></b>
+      &lt;core-splitter direction="right" touch-action="none">&lt;/core-splitter>
+      <b>&lt;glideroom-chat>&lt;/glideroom-chat></b>
+    &lt;/div>
+    &lt;footer-element>&lt;/footer-element>
+  &lt;/div>
+  &lt;glideroom-dialog-entry id="entry">&lt;/glideroom-dialog-entry>
+  &lt;glideroom-dialog-settings id="settings">&lt;/glideroom-dialog-settings>
+  &lt;script src="js/room.s">&lt;/script>
+&lt;/body>
+</pre></article></slide><slide><hgroup><h2>Show me the Code!</h2><h3>room.js</h3></hgroup><article><pre data-lang="javascript" class="prettyprint"><b>var backend = document.querySelector("glideroom-backend");</b>
+var chat = document.querySelector("glideroom-chat");
+
+window.addEventListener("polymer-ready", function() {
+  chat.addEventListener("chat-message", function(event) {
+    backend.sendMessage(event.detail);
+  });
+  <b>backend.addEventListener("room-event", function(event) {
+    chat.addMessage(event.detail);
+    conference.processEvent(event.detail);
+  });</b>
+  backend.addEventListener("room-ready", function(event) {
+    conference.start(event.detail);
+  });
+});
+</pre></article></slide><slide class="segue dark nobackground"><aside class="gdbar right bottom"><img src="images/pandastrike-logo-256.png"/></aside><hgroup class="auto-fadein"><h2>Resources</h2></hgroup></slide><slide><hgroup><h2>RTFM</h2></hgroup><article class="smaller"><ul>
+<li>Polymer<ul>
+<li>Polymer Project: <a href="https://www.polymer-project.org">polymer-project.org</a></li>
+<li>Polymer API docs: <a href="http://bit.ly/polymer-api">bit.ly/polymer-api</a></li>
+<li>Polymer Databinding: <a href="http://bit.ly/polymer-databinding">bit.ly/polymer-databinding</a></li>
+<li>Polymer Layout Reference: <a href="http://bit.ly/polymer-layout">bit.ly/polymer-layout</a></li>
+</ul>
+</li>
+<li>Components<ul>
+<li>Core Elements: <a href="http://bit.ly/core-elements">bit.ly/core-elements</a></li>
+<li>Core Elements Demo: <a href="http://bit.ly/core-elements-demo">bit.ly/core-elements-demo</a></li>
+<li>Paper Elements: <a href="http://bit.ly/paper-elements-demo">bit.ly/paper-elements</a></li>
+<li>Paper Elements Demo: <a href="http://bit.ly/paper-elements-demo">bit.ly/paper-elements-demo</a></li>
+</ul>
+</li>
+<li>Other Resources<ul>
+<li>Built with Polymer: <a href="http://builtwithpolymer.org">builtwithpolymer.org</a></li>
+<li>Polymer Themes: <a href="https://polymerthemes.com">polymerthemes.com</a></li>
+</ul>
+</li>
+</ul>
+</article></slide><slide class="thank-you-slide segue nobackground"><aside class="gdbar right"><img src="images/pandastrike-logo-256.png"/></aside><article class="flexbox vleft auto-fadein"><h2>&lt;Thank You!&gt;</h2><!-- p Important contact information goes here.--></article><p data-config-contact="" class="auto-fadein"><!-- populated from slide_config.json--></p></slide><slide class="logoslide dark nobackground"><article class="flexbox vcenter"><span><img src="images/pandastrike-wide.png"/></span><a href="http://www.pandastrike.com">www.pandastrike.com</a><a href="https://www.twitter.com/deliciousbamboo">@deliciousbamboo</a></article></slide><slide class="backdrop"></slide><script type="text/javascript">// find all iframes and define shortcut variables according to their IDs
+[].slice.apply(document.querySelectorAll("iframe")).forEach(function(example) {
+  window[example.id] = example;
+});
+</script></slides><script>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script><!--[if IE]><script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script><script>CFInstall.check({mode: 'overlay'});</script><![endif]--></body></html>
